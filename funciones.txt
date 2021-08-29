@@ -1,0 +1,59 @@
+i: filas; j: Columnas
+
+a) pred esMatriz (m: seq<seq<z>>){
+  (Pt i: Z)(0 <= i < |m| imp luego |m(i)|>0) Y
+  (Pt j: Z)(0 <= j < |m|) imp luego |m(i)|=|m(j)|)
+} LISTA
+
+b) pred existeUno (m: Mat<Z>){
+  (|m| != 0)
+} LISTA
+
+c1) pred ColumnasVariablesHogar(m: Mat<Z>){
+  (Pt i : Z)(0 <= i < |m| imp luego |m[i]| = 12)
+} LISTA
+
+c2) pred ColumnasVariablesIndiv(m: Mat<Z>){
+  (Pt i : Z)(0 <= i < |m| imp luego |m[i]| = 11)
+} LISTA
+
+d) pred HogarIndAsoc(ti: Mat<Z>; th: Mat<Z>){
+  (Pt i : Z)((Ex j : Z)(0 <= i < |ti| Y 0 <= j < |th| imp luego th[j][@hogcodusu] = ti[i][@indcodusu]))
+Y (Pt j : Z)((Ex i : Z)(0 <= j < |ti| Y 0 <= i < |th| imp luego th[j][@hogcodusu] = ti[i][@indcodusu]))
+} PREGUNTAR
+
+e1) pred NoHayRepetidosInd (ti: EPHi){
+  (Pt i,j: Z)((0 <= i,j < |m| Y (i =!j)) imp luego ~(m[i] = m[j]))
+}
+
+e2) pred NoHayRepetidosHog (th: EPHh){
+  (Pt i,j: Z)((0 <= i,j < |m| Y (i =!j)) imp luego (m[i][@hogcodusu] =! m[j][@hogcodusu]))
+}
+
+f) pred LatitudyLongitud (th: EPHh){
+  (Pt i : Z)(0 <= i < |th| imp luego -90 <= th[i][@latitud] <= 90 ) Y
+  (Pt i : Z)(0 <= i < |th| imp luego -180 <= th[i][@longitud] <= 180)
+} LISTA
+
+g1) pred AñoIgual (ti: EPHi; th: EPHh) {
+    (Pt i,j : Z)(0 <= i,j < |ti| imp luego ti[i][@INDAÑO] = ti[j][@INDAÑO]) Y
+    (Pt i,j : Z)(0 <= i,j < |th| imp luego th[i][@HOGAÑO] = th[j][@HOGAÑO]) Y
+    (ti[0][@INDAÑO] = th[0][@HOGAÑO])
+}
+
+g2) pred TrimestreIgual (ti: EPHi; th: EPHh) {
+    (Pt i,j : Z)(0 <= i,j < |ti| imp luego ti[i][@INDTRIMESTRE] = ti[j][INDTRIMESTRE]) Y
+    (Pt i,j : Z)(0 <= i,j < |th| imp luego th[i][@HOGTRIMESTRE] = th[j][@HOGTRIMESTRE]) Y
+    (ti[0][@INDTRIMESTRE] = th[0][@HOGTRIMESTRE])
+}
+
+h) pred CantidadDeMiembrosMenorA20 (ti: EPHI; th: EPHh){
+  (Pt i : Z)(0 <= i < |th| imp luego ())
+}
+
+aux h)
+
+
+proc EsValidaEncuesta(in th, in ti, result)
+  pre {es matriz(ti) y es Matriz(th)}
+  post{ExisteUno Y (funciones definidas) Y (func2) Y (Func3)}

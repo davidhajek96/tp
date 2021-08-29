@@ -1,0 +1,40 @@
+pred HogarIndAsoc (ti: Mat<Z>; th: Mat<Z>){
+  (Pt i : Z)((Ex j : Z)(0 <= i < |ti|) imp luego (0 <= j < |th| y th[j][@hogcodusu] = ti[i][@indcodusu])) Y
+  (Pt j : Z)((Ex i : Z)(0 <= j < |th|) imp luego (0 <= i < |ti| y th[j][@hogcodusu] = ti[i][@indcodusu]))
+
+}
+
+/* La cuestion es que el rango de i's
+no se vuelve falso en este caso
+si no que se filtran los que necesitamos y
+despues definen que para c/u de esos i's
+existe un j que permite que se cumpla la
+condicion SIN que sea siempre el mismo.
+
+Recuerden el ejemplo (Pt i : Z)(0 <= i < (alguno numero no importante porque es un ejemplo) Y (condicionB))
+tenia el detallazo de que siempre era falso porque es mentira que para todo i:Z se cumpla el rango
+
+Con la forma que propuse que me saqué de un par de ejemplos que conseguí
+lo que logramos es filtrar los i's importantes como dije arriba.
+
+Igual si ven algo raro avisenme
+
+*/
+
+
+e2) pred NoHayRepetidosHog (th: EPHh){
+  (Pt i,j: Z)((0 <= i,j < |m| Y (i =!j)) imp luego ~(m[i][@hogcodusu] = m[j][@hogcodusu]))
+}
+
+/*
+Hice el cambio solo por estandarización, si úsabamos el "not" en e1) también lo usamos en e2)
+
+*/
+
+
+
+Considero que las funciones g1) y g2) pueden quedar aprobadas al igual que AtributoMayor y los rangos
+
+La de la suma les quedó genial, perdón que no me pudiera quedar mas rato.
+
+Igual la voy a revisar bien por las dudas
